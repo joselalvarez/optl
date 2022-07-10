@@ -109,7 +109,7 @@ fmt.Println(foo.OrElseGet(Zero))
 ### **Filter(...) method**
 ```go
 
-func Odd(int i) bool{
+func Odd(i int) bool{
     return i % 2 != 0
 }
 
