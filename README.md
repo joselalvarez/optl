@@ -124,39 +124,39 @@ foo.Filter(Odd).IsPresent() // true
 ### **JSON Marshalling**
 
 ```go
-	sample := Sample{
-		Field1: optl.Of("Text ..."),
-		Field2: optl.Of(1),
-	}
+sample := Sample{
+	Field1: optl.Of("Text ..."),
+	Field2: optl.Of(1),
+}
 
-	bytes, _ := json.Marshal(sample)
+bytes, _ := json.Marshal(sample)
 
-	fmt.Println(string(bytes)) // {"Field1":"Text ...","Field2":1}
+fmt.Println(string(bytes)) // {"Field1":"Text ...","Field2":1}
 
-	sample = Sample{
-		Field1: optl.Of("Other Text ..."),
-		Field2: optl.Empty[int](),
-	}
+sample = Sample{
+	Field1: optl.Of("Other Text ..."),
+	Field2: optl.Empty[int](),
+}
 
-	bytes, _ = json.Marshal(sample)
+bytes, _ = json.Marshal(sample)
 
-	fmt.Println(string(bytes)) // {"Field1":"Other Text ...","Field2":null}
+fmt.Println(string(bytes)) // {"Field1":"Other Text ...","Field2":null}
 ```
 
 ### **JSON Unmarshalling**
 
 ```go
-	var sample Sample
-	json.Unmarshal([]byte(`{"Field1":"Text ...","Field2":1}`), &sample)
+var sample Sample
+json.Unmarshal([]byte(`{"Field1":"Text ...","Field2":1}`), &sample)
 
-	fmt.Println(sample.Field1.Get()) // Text ...
-	fmt.Println(sample.Field2.Get()) // 1
+fmt.Println(sample.Field1.Get()) // Text ...
+fmt.Println(sample.Field2.Get()) // 1
 
-    	var sample2 Sample
-	json.Unmarshal([]byte(`{"Field1":"Other Text ...","Field2":null}`), &sample2)
+var sample2 Sample
+json.Unmarshal([]byte(`{"Field1":"Other Text ...","Field2":null}`), &sample2)
 
-	fmt.Println(sample2.Field1.Get())     // Other Text ...
-	fmt.Println(sample2.Field2.IsPresent()) // false
+fmt.Println(sample2.Field1.Get())     // Other Text ...
+fmt.Println(sample2.Field2.IsPresent()) // false
 
 ```
 
