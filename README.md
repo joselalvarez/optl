@@ -71,11 +71,13 @@ foo := optl.Of("Hello optional")
 
 foo.IsPresent() // true
 
+foo.Get() // Hello optional
+
 bar := optl.Empty[int]()
 
 bar.IsEmpty() // true
 
-bar.Get() //Panic error!!
+bar.Get() // Panic error!!
 ```
 
 ### **IfPresent(...) method**
@@ -150,7 +152,7 @@ foo.Filter(Odd).IsPresent() // true
 	fmt.Println(sample.Field1.Get()) // Text ...
 	fmt.Println(sample.Field2.Get()) // 1
 
-    var sample2 Sample
+    	var sample2 Sample
 	json.Unmarshal([]byte(`{"Field1":"Other Text ...","Field2":null}`), &sample2)
 
 	fmt.Println(sample2.Field1.Get())     // Other Text ...
