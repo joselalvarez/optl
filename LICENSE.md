@@ -1,4 +1,4 @@
-BSD License
+BSD-3-Clause License
 
 Copyright 2022 José Luis Álvarez
 
